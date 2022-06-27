@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import logging.config
 from typing import List, Optional, TYPE_CHECKING
@@ -171,3 +172,17 @@ class Nornir(object):
         if not isinstance(v, cls):
             raise ValueError(f"Nornir: Nornir expected not {type(v)}")
         return v
+<<<<<<< HEAD
+=======
+
+    @property
+    def state(self):
+        return GlobalState
+
+    async def run_async(
+        self, task, **kwargs,
+    ):
+        await asyncio.gather(
+            *(task(h, **kwargs) for h in self.inventory.hosts.values())
+        )
+>>>>>>> 2e33c9e23fe5a93e65b5adb7b6800d5e39db21d0
